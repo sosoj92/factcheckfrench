@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Véridique</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <h1>Véridique</h1>
+    </div>
+    <button id="btn-options" class="icon-btn" title="Réglages">⚙</button>
+  </header>
+
+  <div id="banner-no-key" class="banner hidden">
+    Aucune clé API configurée.
+    <button id="banner-open-options" class="link-btn">Ouvrir les réglages</button>
+  </div>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab active" data-tab="direct" role="tab">Direct</button>
+    <button class="tab" data-tab="texte" role="tab">Texte</button>
+    <button class="tab" data-tab="historique" role="tab">Historique</button>
+    <button class="tab" data-tab="stats" role="tab">Stats</button>
+  </nav>
+
+  <!-- ============ ONGLET DIRECT ============ -->
+  <section id="tab-direct" class="tab-panel active">
+    <div class="listen-controls">
+      <button id="btn-listen" class="btn-primary">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="btn-listen-label">Démarrer l'écoute</span>
+      </button>
+      <p class="hint">Lancez la vidéo ou le débat avec le son sur haut-parleurs. Véridique transcrit via le micro et vérifie les affirmations au fil de l'eau.</p>
+    </div>
+
+    <div class="speakers">
+      <div class="speakers-head">
+        <span class="label">Qui parle&nbsp;?</span>
+        <button id="btn-add-speaker" class="link-btn">+ Ajouter</button>
+      </div>
+      <div id="speaker-chips" class="chips">
+        <button class="chip active" data-speaker="">Inconnu</button>
+      </div>
+    </div>
+
+    <div class="transcript-box">
+      <div class="transcript-head">
+        <span class="label">Transcription</span>
+        <span id="listen-status" class="status">inactif</span>
+      </div>
+      <div id="transcript" class="transcript" aria-live="polite">
+        <span class="placeholder">La transcription apparaîtra ici…</span>
+      </div>
+    </div>
+
+    <div class="feed-head">
+      <span class="label">Vérifications</span>
+      <span>
+        <button id="btn-inject-demo" class="link-btn hidden" title="Injecter le prochain verdict de démonstration">▶ démo</button>
+        <span id="queue-status" class="status"></span>
+      </span>
+    </div>
+    <div id="feed" class="feed">
+      <p class="placeholder">Les verdicts s'afficheront ici dès qu'une affirmation vérifiable est détectée.</p>
+    </div>
+  </section>
+
+  <!-- ============ ONGLET TEXTE ============ -->
+  <section id="tab-texte" class="tab-panel">
+    <p class="hint">Collez un passage d'article, un tweet, un extrait de programme… ou sélectionnez du texte sur une page puis clic droit → «&nbsp;Véridique&nbsp;: vérifier&nbsp;».</p>
+    <textarea id="texte-input" rows="6" placeholder="Collez le texte à vérifier ici…"></textarea>
+    <button id="btn-check-text" class="btn-primary">Vérifier ce texte</button>
+    <div id="feed-texte" class="feed"></div>
+  </section>
+
+  <!-- ============ ONGLET HISTORIQUE ============ -->
+  <section id="tab-historique" class="tab-panel">
+    <div class="history-actions">
+      <button id="btn-export-json" class="btn-secondary">Exporter JSON</button>
+      <button id="btn-export-csv" class="btn-secondary">Exporter CSV</button>
+      <button id="btn-clear-history" class="btn-danger">Effacer</button>
+    </div>
+    <div id="feed-historique" class="feed">
+      <p class="placeholder">Aucune vérification enregistrée pour l'instant.</p>
+    </div>
+  </section>
+
+  <!-- ============ ONGLET STATS ============ -->
+  <section id="tab-stats" class="tab-panel">
+    <p class="hint">Bilan par intervenant sur l'ensemble des vérifications enregistrées.</p>
+    <div id="stats-container">
+      <p class="placeholder">Les statistiques apparaîtront après vos premières vérifications.</p>
+    </div>
+  </section>
+
+  <footer class="footnote">
+    Les verdicts sont générés par IA et peuvent être incomplets ou erronés.
+    Consultez toujours les sources citées et exercez votre esprit critique.
+  </footer>
+
+  <script type="module" src="sidepanel.js"></script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Véridique — Fact-checking politique",
+  "short_name": "Véridique",
+  "version": "1.1.0",
+  "description": "Vérification factuelle en temps réel des discours politiques, débats et articles. Verdicts sourcés (INSEE, AFP Factuel, vie-publique.fr...). Nécessite votre propre clé API.",
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "sidePanel",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://api.anthropic.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "action": {
+    "default_title": "Véridique — ouvrir le panneau de fact-checking",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

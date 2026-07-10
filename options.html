@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Véridique — Réglages</title>
+  <style>
+    :root {
+      --bleu: #000091; --rouge: #e1000f; --encre: #161616;
+      --gris: #666; --gris-clair: #e5e5e5; --fond: #f6f6f6; --blanc: #fff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: var(--fond); color: var(--encre); font-size: 14px;
+      display: flex; justify-content: center; padding: 40px 16px;
+    }
+    main { background: var(--blanc); border: 1px solid var(--gris-clair); border-radius: 10px; padding: 28px; max-width: 560px; width: 100%; border-top: 4px solid var(--bleu); }
+    h1 { font-size: 20px; margin-bottom: 4px; }
+    .sub { color: var(--gris); margin-bottom: 24px; font-size: 13px; }
+    label { display: block; font-weight: 600; margin: 18px 0 6px; }
+    input, select {
+      width: 100%; padding: 10px; font: inherit;
+      border: 1px solid var(--gris-clair); border-radius: 8px;
+    }
+    input:focus, select:focus { outline: 2px solid var(--bleu); outline-offset: 1px; }
+    .help { font-size: 12.5px; color: var(--gris); margin-top: 5px; line-height: 1.45; }
+    .help a { color: var(--bleu); }
+    button {
+      margin-top: 24px; background: var(--bleu); color: var(--blanc);
+      border: none; border-radius: 8px; padding: 11px 20px;
+      font: inherit; font-weight: 600; cursor: pointer;
+    }
+    button:hover { background: #1212ff; }
+    #status { margin-top: 12px; font-size: 13px; }
+    #status.ok { color: #18753c; }
+    #status.err { color: var(--rouge); }
+    .privacy {
+      margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--gris-clair);
+      font-size: 12px; color: var(--gris); line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Véridique — Réglages</h1>
+    <p class="sub">Fact-checking politique en temps réel, avec votre propre clé API.</p>
+
+    <label for="apiKey">Clé API Anthropic</label>
+    <input type="password" id="apiKey" placeholder="sk-ant-..." autocomplete="off" />
+    <p class="help">
+      Créez une clé sur <a href="https://console.anthropic.com/" target="_blank" rel="noopener">console.anthropic.com</a>.
+      Elle est stockée uniquement dans votre navigateur et envoyée directement à l'API — jamais à un tiers.
+    </p>
+
+    <label for="model">Modèle</label>
+    <select id="model">
+      <option value="claude-sonnet-4-6">Claude Sonnet 4.6 (recommandé — rapide et précis)</option>
+      <option value="claude-haiku-4-5-20251001">Claude Haiku 4.5 (plus économique)</option>
+      <option value="claude-opus-4-8">Claude Opus 4.8 (le plus poussé, plus coûteux)</option>
+    </select>
+
+    <label for="maxSearches">Recherches web par vérification</label>
+    <select id="maxSearches">
+      <option value="2">2 — économique</option>
+      <option value="3" selected>3 — équilibré</option>
+      <option value="5">5 — approfondi</option>
+    </select>
+    <p class="help">Plus de recherches = verdicts mieux sourcés, mais coût API plus élevé. En direct pendant un débat, 3 est un bon compromis.</p>
+
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+      <input type="checkbox" id="demoMode" style="width:auto" />
+      Mode démo (tournage vidéo)
+    </label>
+    <p class="help">
+      Affiche des verdicts préenregistrés — repris de vrais fact-checks publiés — quand
+      les passages correspondants sont détectés dans la transcription, ou via le bouton
+      «&nbsp;▶ démo&nbsp;» du panneau. Pratique pour filmer une démonstration sans dépendre
+      du direct. <strong>Pensez à préciser «&nbsp;démonstration simulée&nbsp;» dans votre
+      vidéo</strong> et à désactiver ce mode ensuite.
+    </p>
+
+    <button id="save">Enregistrer</button>
+    <p id="status"></p>
+
+    <p class="privacy">
+      <strong>Confidentialité :</strong> Véridique n'a aucun serveur. Les transcriptions et textes
+      sont envoyés directement de votre navigateur à l'API Anthropic avec votre clé. Rien n'est
+      collecté, stocké ou vendu par l'extension. L'historique des vérifications reste en local
+      dans votre navigateur.
+    </p>
+  </main>
+  <script src="options.js"></script>
+</body>
+</html>

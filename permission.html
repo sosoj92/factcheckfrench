@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Véridique — Autoriser le micro</title>
+  <style>
+    :root { --bleu: #000091; --rouge: #e1000f; --vert: #18753c; --gris: #666; --gris-clair: #e5e5e5; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f6f6f6; color: #161616; font-size: 15px;
+      display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;
+    }
+    main {
+      background: #fff; border: 1px solid var(--gris-clair); border-top: 4px solid var(--bleu);
+      border-radius: 10px; padding: 32px; max-width: 480px; text-align: center;
+    }
+    h1 { font-size: 20px; margin-bottom: 10px; }
+    p { color: var(--gris); line-height: 1.5; margin-bottom: 20px; }
+    button {
+      background: var(--bleu); color: #fff; border: none; border-radius: 8px;
+      padding: 12px 24px; font: inherit; font-weight: 600; cursor: pointer;
+    }
+    button:hover { background: #1212ff; }
+    #status { margin-top: 18px; font-weight: 600; }
+    #status.ok { color: var(--vert); }
+    #status.err { color: var(--rouge); }
+    .steps { text-align: left; font-size: 13.5px; color: var(--gris); margin-top: 22px; line-height: 1.6; border-top: 1px solid var(--gris-clair); padding-top: 16px; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>🎙️ Autoriser le micro pour Véridique</h1>
+    <p>Chrome exige que cette autorisation soit donnée depuis une page dans un onglet
+      (impossible depuis le panneau latéral). Elle n'est demandée qu'une seule fois.</p>
+    <button id="ask">Autoriser le microphone</button>
+    <p id="status"></p>
+    <div class="steps">
+      <strong>Si aucune fenêtre n'apparaît :</strong><br>
+      1. Cliquez sur l'icône 🎥/🔒 à gauche de la barre d'adresse<br>
+      2. Réglez « Microphone » sur <em>Autoriser</em><br>
+      3. Rechargez cette page et re-cliquez sur le bouton
+    </div>
+  </main>
+  <script src="permission.js"></script>
+</body>
+</html>
