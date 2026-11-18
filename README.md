@@ -71,8 +71,9 @@ Haiku et « 2 recherches » dans les réglages.
 ├── sidepanel.html/css/js  # Interface principale (Direct, Texte, Historique, Stats)
 ├── options.html/js        # Réglages : clé API, modèle, budget recherche
 ├── permission.html/js     # Demande d'accès au micro
-├── api.js                 # Pipeline : extraction d'affirmations → vérification sourcée
-└── icon*.png              # Icônes
+├── lib/api.js             # Pipeline : extraction d'affirmations → vérification sourcée
+├── lib/demo.js            # Scénarios de démonstration
+└── icons/                 # Icônes
 ```
 
 Pipeline de vérification :
