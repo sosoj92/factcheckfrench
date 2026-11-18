@@ -1,8 +1,8 @@
 # Véridique — Fact-checking politique en temps réel 🇫🇷
 
-Extension Chrome de vérification factuelle des discours politiques, débats télévisés et
-articles, inspirée d'InTruth mais pensée pour le débat public **français**, avec des
-sources françaises prioritaires (INSEE, vie-publique.fr, AFP Factuel, Les Décodeurs…).
+**Extension Chrome qui vérifie en direct ce que disent les politiques** (débat télé, interview, article)
+et donne un verdict sourcé : Vrai, Plutôt vrai, Trompeur, Faux ou Invérifiable. Les sources françaises
+officielles passent en premier (INSEE, vie-publique.fr, AFP Factuel, Les Décodeurs…).
 
 ## Fonctionnalités
 
@@ -21,10 +21,10 @@ avec une explication de 2–4 phrases, un niveau de confiance et des sources cli
 
 ## Installation (mode développeur)
 
-1. Téléchargez et décompressez `veridique.zip`.
+1. Téléchargez ce dépôt (bouton **Code → Download ZIP**) et décompressez-le.
 2. Ouvrez Chrome → `chrome://extensions`.
 3. Activez le **Mode développeur** (interrupteur en haut à droite).
-4. Cliquez **« Charger l'extension non empaquetée »** et sélectionnez le dossier `veridique`.
+4. Cliquez **« Charger l'extension non empaquetée »** et sélectionnez le dossier décompressé.
 5. Cliquez sur l'icône Véridique → le panneau latéral s'ouvre.
 6. Ouvrez les réglages (⚙) et collez votre **clé API Anthropic**
    (créée sur [console.anthropic.com](https://console.anthropic.com/)).
@@ -66,13 +66,14 @@ Haiku et « 2 recherches » dans les réglages.
 ## Architecture
 
 ```
-veridique/
-├── manifest.json        # Manifest V3
-├── background.js        # Service worker : menu contextuel, side panel
-├── sidepanel.html/css/js# Interface principale (Direct, Texte, Historique, Stats)
-├── options.html/js      # Réglages : clé API, modèle, budget recherche
-├── lib/api.js           # Pipeline : extraction d'affirmations → vérification sourcée
-└── icons/               # Icônes
+├── manifest.json          # Manifest V3
+├── background.js          # Service worker : menu contextuel, side panel
+├── sidepanel.html/css/js  # Interface principale (Direct, Texte, Historique, Stats)
+├── options.html/js        # Réglages : clé API, modèle, budget recherche
+├── permission.html/js     # Demande d'accès au micro
+├── lib/api.js             # Pipeline : extraction d'affirmations → vérification sourcée
+├── lib/demo.js            # Scénarios de démonstration
+└── icons/                 # Icônes
 ```
 
 Pipeline de vérification :
@@ -85,7 +86,7 @@ Pipeline de vérification :
 ## Publication sur le Chrome Web Store (optionnel)
 
 1. Créez un compte développeur sur le [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/) (5 $ une fois).
-2. Zippez le dossier (le zip fourni convient), uploadez-le, remplissez la fiche
+2. Zippez le dossier, uploadez-le, remplissez la fiche
    (captures d'écran, politique de confidentialité — le texte de la section
    « Confidentialité » ci-dessus peut servir de base).
 3. Déclarez les permissions : `storage`, `contextMenus`, `sidePanel`, `activeTab`
